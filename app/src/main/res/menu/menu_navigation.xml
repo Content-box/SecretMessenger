@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/menu_item_settings"
+        android:icon="@drawable/settings_outline"/>
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/menu_item_faq"
+        android:icon="@drawable/help_circle_outline"/>
+
+</menu>

@@ -1,4 +1,15 @@
 <resources>
+    <!-- Application name -->
     <string name="app_name">SecretMessenger</string>
-    <string name="search_title">Search</string>
+
+    <!-- Toolbar -->
+    <string name="search_title">Поиск</string>
+
+    <!-- Menu items -->
+    <string name="menu_item_settings">Настройки</string>
+    <string name="menu_item_faq">Справка</string>
+
+    <string name="view_navigation_open">Open</string>
+    <string name="view_navigation_close">Close</string>
+
 </resources>
