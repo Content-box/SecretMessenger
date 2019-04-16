@@ -9,6 +9,11 @@
     <string name="menu_item_settings">Настройки</string>
     <string name="menu_item_faq">Справка</string>
 
+    <!-- Tab items -->
+    <string name="tab_item_dialogs">Сообщения</string>
+    <string name="tab_item_contacts">Контакты</string>
+
+
     <string name="view_navigation_open">Open</string>
     <string name="view_navigation_close">Close</string>
 

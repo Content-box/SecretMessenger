@@ -4,10 +4,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.kohb.secretmessenger.adapter.MessageListAdapter;
+import com.kohb.secretmessenger.adapter.TabsFragmentAdapter;
 import com.kohb.secretmessenger.dto.MessageDTO;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ProgressBar progressBar;
+    private ViewPager viewPager;
+
 
 
     private RecyclerView messagesRecyclerView;
@@ -45,19 +49,25 @@ public class MainActivity extends AppCompatActivity {
 
         initToolbar();
         initNavigationView();
-        initTab();
+        initTabs();
     }
 
-    private void initTab() {
-        progressBar = findViewById(R.id.progressbar);
+    private void initTabs() {
+//        progressBar = findViewById(R.id.progressbar);
+//
+//        messagesRecyclerView = findViewById(R.id.messages_recycler);
+//        messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        adapter = new MessageListAdapter(this, messagesList);
+//        messagesRecyclerView.setAdapter(adapter);
+//
+//        new MessageTask().execute();
+        viewPager = findViewById(R.id.view_pager);
+        TabsFragmentAdapter adapter = new TabsFragmentAdapter(getApplicationContext(), getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
 
-        messagesRecyclerView = findViewById(R.id.messages_recycler);
-        messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new MessageListAdapter(this, messagesList);
-        messagesRecyclerView.setAdapter(adapter);
-
-        new MessageTask().execute();
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void initToolbar() {
