@@ -11,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.kohb.secretmessenger.adapter.MessageListAdapter;
 import com.kohb.secretmessenger.dto.MessageDTO;
@@ -19,6 +21,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
+    private ProgressBar progressBar;
+
 
     private RecyclerView messagesRecyclerView;
     MessageListAdapter adapter;
@@ -44,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initTab() {
+        progressBar = findViewById(R.id.progressbar);
+
         messagesRecyclerView = findViewById(R.id.messages_recycler);
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -51,19 +58,6 @@ public class MainActivity extends AppCompatActivity {
         messagesRecyclerView.setAdapter(adapter);
 
         new MessageTask().execute();
-    }
-
-    private ArrayList<MessageDTO> messagesMock() {
-        ArrayList<MessageDTO> list = new ArrayList<>();
-
-        list.add(new MessageDTO(0,"Hi",1554456924));
-        list.add(new MessageDTO(0,"Hi",155445692));
-        list.add(new MessageDTO(0,"Hi",155445692));
-        list.add(new MessageDTO(0,"Hi",155445692));
-        list.add(new MessageDTO(0,"Hi",155445692));
-        list.add(new MessageDTO(0,"Hi",155445692));
-
-        return list;
     }
 
     private void initToolbar() {
@@ -98,19 +92,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class MessageTask extends AsyncTask<Void, Void, MessageDTO>{
+    private class MessageTask extends AsyncTask<Void, Void, MessageDTO[]>{
 
         @Override
-        protected MessageDTO doInBackground(Void... voids) {
-            RestTemplate template = new RestTemplate();
-            template.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-
-            return template.getForObject(Constants.URL.GET_ALL_MESSAGES, MessageDTO.class);
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
-        protected void onPostExecute(MessageDTO messageDTO) {
-            messagesList.add(messageDTO);
+        protected MessageDTO[] doInBackground(Void... voids) {
+            RestTemplate template = new RestTemplate();
+            template.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+            return template.getForObject(Constants.URL.GET_ALL_MESSAGES, MessageDTO[].class);
+        }
+
+        @Override
+        protected void onPostExecute(MessageDTO[] messageDTO) {
+            progressBar.setVisibility(View.GONE);
+
+            messagesList.addAll(Arrays.asList(messageDTO));
             adapter.setMessages(messagesList);
             refreshData();
         }

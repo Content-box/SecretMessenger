@@ -39,12 +39,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
+
         </LinearLayout>
-
-
-
-
-
 
 
         <android.support.design.widget.FloatingActionButton
@@ -55,6 +51,13 @@
             android:layout_gravity="end|bottom"
             android:layout_marginBottom="@dimen/fab_margin"
             android:layout_marginRight="@dimen/fab_margin"/>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
     </android.support.design.widget.CoordinatorLayout>
 
