@@ -33,11 +33,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/autor_text"
+                    android:id="@+id/author_text"
                     android:layout_width="0dp"
                     android:layout_weight="0.55"
                     android:layout_height="wrap_content"
-                    android:text="Autor" />
+                    android:text="Author" />
 
                 <TextView
                     android:id="@+id/time_text"

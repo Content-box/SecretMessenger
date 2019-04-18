@@ -59,12 +59,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         this.users = users;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView username;
-        public ImageView profile_image;
+        TextView username;
+        ImageView profile_image;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             username = itemView.findViewById(R.id.username);

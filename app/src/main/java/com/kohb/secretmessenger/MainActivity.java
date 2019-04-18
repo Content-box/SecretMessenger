@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.kohb.secretmessenger.adapter.MessageListAdapter;
+import com.kohb.secretmessenger.adapter.MessageAdapter;
 import com.kohb.secretmessenger.adapter.TabsFragmentAdapter;
 import com.kohb.secretmessenger.dto.MessageDTO;
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private RecyclerView messagesRecyclerView;
-    MessageListAdapter adapter;
+    private MessageAdapter adapter;
     private ArrayList<MessageDTO> messagesList = new ArrayList<>();
 
     @Override
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 //        messagesRecyclerView = findViewById(R.id.messages_recycler);
 //        messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 //
-//        adapter = new MessageListAdapter(this, messagesList);
+//        adapter = new MessageAdapter(this, messagesList);
 //        messagesRecyclerView.setAdapter(adapter);
 //
 //        new MessageTask().execute();

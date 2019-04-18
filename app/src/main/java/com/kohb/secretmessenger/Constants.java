@@ -7,5 +7,9 @@ public class Constants {
 
         public static final String GET_ALL_MESSAGES = HOST + "messages";
         public static final String GET_ALL_USERS = HOST + "users";
+        public static final String SAVE_MESSAGE = HOST + "save_message";
+
+
+
     }
 }
