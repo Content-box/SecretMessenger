@@ -29,20 +29,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         this.inflater = LayoutInflater.from(context);
     }
 
+
+
     @NonNull
     @Override
     public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        if (i == MSG_TYPE_RIGHT){
+        if (i == MSG_TYPE_RIGHT) {
             View view = inflater.inflate(R.layout.chat_item_right, viewGroup, false);
             return new ViewHolder(view);
-        }
-        else {
+        } else {
             View view = inflater.inflate(R.layout.chat_item_left, viewGroup, false);
             return new ViewHolder(view);
         }
-
-
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
@@ -54,7 +54,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 //        viewHolder.textViewTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", message.getDate()));
         viewHolder.textViewMessage.setText(message.getMessage());
         //viewHolder.textViewTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", message.getDate()));
-
 
 
     }
@@ -69,10 +68,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public int getItemViewType(int position) {
         //получить id текущего пользователя
         int CURRENT_SENDER_ID = 0;
-        if (messages.get(position).getSenderId()==CURRENT_SENDER_ID){
+        if (messages.get(position).getSenderId() == CURRENT_SENDER_ID) {
             return MSG_TYPE_RIGHT;
-        }
-        else {
+        } else {
             return MSG_TYPE_LEFT;
         }
     }
@@ -81,7 +79,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         this.messages = messages;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
 //        TextView textViewMessage;
 //        TextView textViewAuhtor;
@@ -97,7 +95,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 //            textViewTime = itemView.findViewById(R.id.time_text);
 
             textViewMessage = itemView.findViewById(R.id.show_message);
-            profileImage= itemView.findViewById(R.id.profile_image);
+            profileImage = itemView.findViewById(R.id.profile_image);
 
 
         }
